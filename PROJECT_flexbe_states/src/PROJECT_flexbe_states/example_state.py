@@ -33,7 +33,7 @@ class ExampleState(EventState):
 		# Main purpose is to check state conditions and trigger a corresponding outcome.
 		# If no outcome is returned, the state will stay active.
 
-		if rospy.Time.now() - self._start_time < self._target_time:
+		if rospy.Time.now() - self._start_time > self._target_time:
 			return 'continue' # One of the outcomes declared above.
 		
 
@@ -44,7 +44,7 @@ class ExampleState(EventState):
 		# The following code is just for illustrating how the behavior logger works.
 		# Text logged by the behavior logger is sent to the operator and displayed in the GUI.
 
-		time_to_wait = rospy.Time.now() - self._start_time - self._target_time
+		time_to_wait = (self._target_time - (rospy.Time.now() - self._start_time)).to_sec()
 
 		if time_to_wait > 0:
 			Logger.loginfo('Need to wait for %.1f seconds.' % time_to_wait)
