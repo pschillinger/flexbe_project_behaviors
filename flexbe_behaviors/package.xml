@@ -14,4 +14,8 @@
   <!-- Add here all ROS packages that contain behaviors -->
   <run_depend>behavior_example_behavior</run_depend>
 
+  <export>
+    <flexbe_behaviors />
+  </export>
+
 </package>

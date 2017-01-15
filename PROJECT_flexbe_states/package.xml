@@ -14,4 +14,8 @@
 
   <run_depend>flexbe_core</run_depend>
 
+  <export>
+    <flexbe_states />
+  </export>
+
 </package>
